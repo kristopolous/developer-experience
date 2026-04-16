@@ -1,5 +1,7 @@
 import click
 import httpx
+import re
+import html
 from datetime import datetime
 from typing import List, Optional
 
@@ -103,9 +105,9 @@ def comments(story_id: int, limit: int):
             time_str = datetime.fromtimestamp(comment.get('time', 0)).strftime('%Y-%m-%d %H:%M')
             user = comment.get('by', 'unknown')
             body = comment.get('text', '')
-            # Simple HTML tag removal (HN API returns HTML in comments)
-            import re
-            body = re.sub('<[^<]+?>', '', body)
+            
+            # Remove HTML tags and unescape entities
+            body = html.unescape(re.sub('<[^<]+?>', '', body))
 
             click.echo(click.style(time_str.center(15), fg='magenta'), nl=False)
             click.echo('by ' + click.style(str(user), fg='cyan'))
