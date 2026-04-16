@@ -21,6 +21,14 @@ pip install -e .
 
 ## Usage
 
+You can run the CLI directly using the wrapper script in the root directory:
+
+```bash
+./hn stories
+```
+
+Or install it to your environment:
+
 List top stories:
 ```bash
 hn stories
