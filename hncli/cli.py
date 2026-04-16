@@ -56,7 +56,7 @@ def stories(sort_by: str, limit: int):
         results = hn.get_stories(story_type=sort_by, limit=limit)
 
         if results:
-            click.echo(click.style('      when      | comments |   id    | title', fg='yellow'))
+            click.echo(click.style('       when      | comments |    id     | title', fg='yellow'))
         else:
             click.echo(click.style('no stories found!', fg='red'))
 
@@ -66,12 +66,12 @@ def stories(sort_by: str, limit: int):
             
             time_str = datetime.fromtimestamp(story.get('time', 0)).strftime('%Y-%m-%d %H:%M')
             comments_count = story.get('descendants', 0)
-            story_id = story.get('id', '')
+            story_id = str(story.get('id', ''))
             title = story.get('title', 'No Title')
 
-            click.echo(click.style(time_str.center(15), fg='magenta') + ' | ', nl=False)
+            click.echo(click.style(time_str.center(16), fg='magenta') + ' | ', nl=False)
             click.echo(click.style(str(comments_count).center(8), fg='red') + ' | ', nl=False)
-            click.echo(click.style(str(story_id), fg='green') + ' | ', nl=False)
+            click.echo(click.style(story_id.center(9), fg='green') + ' | ', nl=False)
             click.echo(click.style(title, fg='white'))
     except Exception as e:
         click.echo(click.style(f"Error: {e}", fg='red'), err=True)
