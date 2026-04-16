@@ -11,30 +11,33 @@ with open('requirements.txt') as f:
 
 setup(
     name='hackernews-cli',
-    description='Read HackerNews lika a hacker',
+    version='1.0.0',
+    description='Read HackerNews like a hacker',
     long_description=readme,
+    long_description_content_type='text/markdown',
     author='Kamil Chmielewski',
     author_email='kamil.chm@gmail.com',
     url='https://github.com/kamilchm/developer-experience',
     license="Apache License (2.0)",
     classifiers=[
-        'Development Status :: 3 - Alpha',
+        'Development Status :: 4 - Beta',
         'Environment :: Console',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: Apache Software License',
         'Natural Language :: English',
         'Operating System :: POSIX :: Linux',
-        'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
+        'Programming Language :: Python :: 3.10',
+        'Programming Language :: Python :: 3.11',
     ],
     packages=find_packages(),
-    setup_requires=required_dev,
+    python_requires='>=3.8',
     install_requires=required,
     entry_points={
         'console_scripts': [
             'hn = hncli.cli:cli',
         ],
-    },
-    vcversioner={
-        'version_module_paths': ['hncli/_version.py'],
     },
 )
