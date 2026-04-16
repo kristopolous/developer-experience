@@ -109,6 +109,7 @@ def comments(story_id: int, limit: int):
             # Remove HTML tags and unescape entities
             body = html.unescape(re.sub('<[^<]+?>', '', body))
 
+
             click.echo(click.style(time_str.center(15), fg='magenta'), nl=False)
             click.echo('by ' + click.style(str(user), fg='cyan'))
             click.echo(body)
